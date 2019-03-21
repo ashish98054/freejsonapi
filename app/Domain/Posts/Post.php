@@ -9,7 +9,7 @@ use App\Domain\Helpers\HasSlug;
 
 final class Post extends Model
 {
-    use HasSlug, PostRelationship;
+    use PostRelationship, HasSlug;
 
     const TABLE = 'posts';
 

@@ -12,11 +12,3 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-
-$router->get('posts/{id}', 'PostController@show')->name('posts#show');
-$router->get('posts-delete/{id}', 'PostController@delete')->name('posts#delete');

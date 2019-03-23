@@ -4,6 +4,7 @@ namespace App\Domain\Posts;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Domain\Users\User;
 use App\Domain\Posts\Traits\PostRelationship;
 use App\Domain\Helpers\HasSlug;
 
@@ -32,7 +33,7 @@ final class Post extends Model
 
     public function featuredImage(): string
     {
-        return $this->featured_image;
+        return url(storage_url_for($this->featured_image));
     }
 
     public function body(): string

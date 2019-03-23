@@ -11,8 +11,9 @@ final class CreatePost
     {
         $post = new Post();
         $post->title = $data->title;
+        $post->slug = $data->title;
         $post->body = $data->body;
-        $post->userRelations()->associate($data->user);
+        $post->userRelation()->associate($data->user);
         $post->save();
 
         return $post;

@@ -3,6 +3,7 @@
 namespace App\Domain\Posts;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use App\Domain\Users\User;
 use App\Domain\Posts\Traits\PostRelationship;
@@ -43,7 +44,12 @@ final class Post extends Model
 
     public function user(): User
     {
-        return $this->userRelations;
+        return $this->userRelation;
+    }
+
+    public function comments(): Collection
+    {
+        return $this->commentsRelation;
     }
 
     public function createdAt(): Carbon

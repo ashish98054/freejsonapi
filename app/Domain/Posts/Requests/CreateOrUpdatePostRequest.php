@@ -16,13 +16,4 @@ final class CreateOrUpdatePostRequest extends BaseFormRequest
     {
         return [];
     }
-
-    public function postData(): PostData
-    {
-        return (new PostData())
-            ->setTitle($this->input('title'))
-            ->setFeaturedImage($this->file('featured_image'))
-            ->setBody($this->input('body'))
-            ->setUser($this->user());
-    }
 }

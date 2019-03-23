@@ -2,9 +2,9 @@
 
 namespace App\Domain\Base;
 
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class BaseFormRequest extends Request
+class BaseFormRequest extends FormRequest
 {
     public function authorize()
     {

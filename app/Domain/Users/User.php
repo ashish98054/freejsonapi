@@ -3,13 +3,15 @@
 namespace App\Domain\Users;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use App\Domain\Helpers\HasTimestamps;
 use App\Domains\Users\Traits\UserRelationship;
 
-final class User extends Model
+final class User extends Authenticatable
 {
+    use Notifiable;
     use UserRelationship, HasTimestamps;
 
     const TABLE = 'users';
@@ -33,6 +35,11 @@ final class User extends Model
         return $this->email;
     }
 
+    public function apiToken(): ?string
+    {
+        return $this->api_token;
+    }
+
     public function emailVerifiedAt(): Carbon
     {
         return $this->email_verified_at;
@@ -41,5 +48,13 @@ final class User extends Model
     public function posts(): Collection
     {
         return $this->postsRelation;
+    }
+
+    public function generateApiToken()
+    {
+        $token = str_random(60);
+
+        $this->api_token =  hash('sha256', $token);
+        $this->save();
     }
 }

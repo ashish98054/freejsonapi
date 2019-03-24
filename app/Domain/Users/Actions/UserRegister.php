@@ -19,6 +19,7 @@ final class UserRegister
         $user->password = bcrypt($data->password);
         $user->email_verified_at = Carbon::now()->toDateTimeString();
         $user->save();
+        $user->generateApiToken();
 
         return $user;
     }

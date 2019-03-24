@@ -16,6 +16,8 @@ class PostController extends Controller
 
     public function __construct(Manager $manager)
     {
+        $this->middleware(['auth:api'])->only('create', 'delete', 'update');
+
         $this->manager = $manager->setSerializer(new DataArraySerializer);
         $this->manager->parseIncludes(isset($_GET['include']) ? $_GET['include'] : '');
     }

@@ -8,5 +8,6 @@ Route::name('api.v1.')->namespace('\App\Api\V1\Http\Controllers')->group(functio
     Route::get('posts/{id}/comments', 'PostController@comments')->name('posts#comments');
 
     Route::get('users', 'UserController@show')->name('users#show');
-    Route::post('login', 'UserController@login')->name('login');
+    Route::post('login', 'AuthController@login')->name('auth#login');
+    Route::post('register', 'AuthController@register')->name('auth#register');
 });

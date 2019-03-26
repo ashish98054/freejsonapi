@@ -45,7 +45,7 @@ final class PostData
         return (new self)
             ->setTitle($request->input('title'))
             ->setBody($request->input('body'))
-            ->setUser(User::find($request->input('user_id')))
+            ->setUser($request->user())
             ->setFeaturedImage($request->file('featured_image'));
     }
 }

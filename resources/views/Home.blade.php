@@ -56,9 +56,19 @@ fetch('https://freejsonapi.com/posts/1')
 <section class="section">
 <h2 class="title">How to</h2>
 <article>
-<div>
-	hdushdi
-</div>
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh lorem. Maecenas aliq
+	<ul>
+		<li><a href="#">Get posts</a></li>
+		<li><a href="#">Get a post</a></li>
+		<li><a href="#">Create post</a></li>
+		<li><a href="#">Delete post</a></li>
+		<li><a href="#">List comments of a given post</a></li>
+		<li><a href="#">Get users</a></li>
+		<li><a href="#">Get a user</a></li>
+		<li><a href="#">User login</a></li>
+		<li><a href="#">User Registration</a></li>
+	</ul>
 </article>
 </section>
 @endsection

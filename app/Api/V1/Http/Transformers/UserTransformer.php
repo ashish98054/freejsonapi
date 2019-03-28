@@ -11,8 +11,7 @@ final class UserTransformer extends Fractal\TransformerAbstract
     {
         return [
             'id' => $user->id(),
-            'url' => route('api.v1.users#show'),
-            'posts_url' => route('api.v1.posts#index'),
+            'url' => route('api.v1.users#show', $user->id()),
             'name' => $user->name(),
             'email' => $user->email(),
             'email_verified_at' => $user->emailVerifiedAt(),

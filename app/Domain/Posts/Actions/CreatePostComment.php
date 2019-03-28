@@ -1,6 +1,6 @@
 <?php
 
-namespace APp\Domain\Posts\Actions;
+namespace App\Domain\Posts\Actions;
 
 use App\Domain\Posts\DataObjects\PostCommentData;
 use App\Domain\Posts\PostComment;

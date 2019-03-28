@@ -9,7 +9,8 @@ Route::name('api.v1.')->namespace('\App\Api\V1\Http\Controllers')->group(functio
     Route::post('posts/{post}/comments', 'PostCommentController@create')->name('posts-comments#create');
     Route::delete('posts/{post}/comments/{comment}', 'PostCommentController@delete')->name('posts-comments#delete');
 
-    Route::get('users', 'UserController@show')->name('users#show');
+    Route::get('users', 'UserController@index')->name('users#index');
+    Route::get('users/{user}', 'UserController@show')->name('users#show');
     Route::post('login', 'AuthController@login')->name('auth#login');
     Route::post('register', 'AuthController@register')->name('auth#register');
 });

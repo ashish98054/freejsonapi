@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<section class="hero">
+<section class="section hero">
 	<h1>Free JSON API</h1>
 	<h2>Real quick api for building your client application</h2>
 <pre>
@@ -19,7 +19,7 @@ fetch('https://freejsonapi.com/posts/1')
 </section>
 
 <section class="section section-demo-free-json-api">
-<h2 class="title">using freejsonapi</h2>
+<h2 class="title">Resources</h2>
 <article>
 <div>
 	<p>
@@ -40,15 +40,24 @@ fetch('https://freejsonapi.com/posts/1')
 			<td>200 users</td>
 		</tr>
 		<tr>
-			<td><a href="#" class="disabled">/login</a></td>
+			<td>/login</td>
 			<td>user authentication</td>
 		</tr>
 		<tr>
-			<td><a href="#" class="disabled">/register</a></td>
+			<td>/register</td>
 			<td>user registration</td>
 		</tr>
 	</tbody>
 	</table>
+</div>
+</article>
+</section>
+
+<section class="section">
+<h2 class="title">How to</h2>
+<article>
+<div>
+	hdushdi
 </div>
 </article>
 </section>

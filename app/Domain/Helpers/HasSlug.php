@@ -2,6 +2,8 @@
 
 namespace App\Domain\Helpers;
 
+use Illuminate\Database\Eloquent\Model;
+
 trait HasSlug
 {
     public function slug(): string
@@ -14,7 +16,7 @@ trait HasSlug
         $this->attributes['slug'] = $this->generateUniqueSlug($slug);
     }
 
-    public function findBySlug(string $slug): self
+    public function findBySlug(string $slug): Model
     {
         return static::where('slug', $slug)->firstOrFail();
     }
@@ -41,6 +43,6 @@ trait HasSlug
             $query->where('id', "!=", $ignoreId);
         }
 
-        return $query->count();
+        return $query->count() > 0;
     }
 }

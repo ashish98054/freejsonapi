@@ -58,7 +58,7 @@ class PostController extends Controller
     {
         $delete->execute(Post::findOrFail($id));
         
-        return response(204, null);
+        return response(null, 204);
     }
 
     public function comments($id)

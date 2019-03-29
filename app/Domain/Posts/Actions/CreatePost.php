@@ -7,15 +7,21 @@ use App\Domain\Posts\Post;
 
 final class CreatePost
 {
+    private $post;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
     public function execute(PostData $data): Post
     {
-        $post = new Post();
-        $post->title = $data->title;
-        $post->slug = $data->title;
-        $post->body = $data->body;
-        $post->userRelation()->associate($data->user);
-        $post->save();
+        $this->post->title = $data->title;
+        $this->post->slug = $data->title;
+        $this->post->body = $data->body;
+        $this->post->userRelation()->associate($data->user);
+        $this->post->save();
 
-        return $post;
+        return $this->post;
     }
 }

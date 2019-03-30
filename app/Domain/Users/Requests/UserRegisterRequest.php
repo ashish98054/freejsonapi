@@ -2,7 +2,7 @@
 
 namespace App\Domain\Users\Requests;
 
-use App\Domain\Base\BaseFormRequest;
+use App\Domain\Core\BaseFormRequest;
 use App\Domain\Users\User;
 
 class UserRegisterRequest extends BaseFormRequest

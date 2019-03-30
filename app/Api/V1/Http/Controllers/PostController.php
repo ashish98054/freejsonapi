@@ -3,7 +3,8 @@
 namespace App\Api\V1\Http\Controllers;
 
 use League\Fractal\{Manager, Serializer\DataArraySerializer, Resource\Item, Resource\Collection, Pagination\IlluminatePaginatorAdapter};
-use App\Domain\Posts\Requests\CreateOrUpdatePostRequest;
+use App\Domain\Posts\Policies\PostPolicy;
+use App\Domain\Posts\Requests\CreateUpdatePostRequest;
 use App\Domain\Posts\Actions\{CreatePost, DeletePost, UpdatePost};
 use App\Domain\Posts\Post;
 use App\Domain\Posts\DataObjects\PostData;
@@ -25,6 +26,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate();
+        
         $resource = new Collection($posts, new PostTransformer);
         $resource->setPaginator(new IlluminatePaginatorAdapter($posts));
 
@@ -33,21 +35,27 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $resource = new Item(Post::findOrFail($id), new PostTransformer);
+        $post = Post::findOrFail($id);
+
+        $resource = new Item($post, new PostTransformer);
 
         return $this->manager->createData($resource)->toArray();
     }
 
-    public function create(CreateOrUpdatePostRequest $request, CreatePost $create)
+    public function create(CreateUpdatePostRequest $request, CreatePost $create)
     {
         $created = $create->execute(PostData::fromRequest($request));
+
         $resource = new Item($created, new PostTransformer);
 
         return $this->manager->createData($resource)->toArray();
     }
 
-    public function update($id, CreateOrUpdatePostRequest $request, UpdatePost $update)
+    public function update($id, CreateUpdatePostRequest $request, UpdatePost $update)
     {
+        $post = Post::findOrFail($id);
+
+        $this->authorize(PostPolicy::UPDATE, $post);
         $updated = $update->execute(Post::findOrFail($id), PostData::fromRequest($request));
         $resource = new Item($updated, new PostTransformer);
         
@@ -56,7 +64,10 @@ class PostController extends Controller
 
     public function delete($id, DeletePost $delete)
     {
-        $delete->execute(Post::findOrFail($id));
+        $post = Post::findOrFail($id);
+
+        $this->authorize(PostPolicy::DELETE, $post);
+        $delete->execute($post);
         
         return response(null, 204);
     }

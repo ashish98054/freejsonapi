@@ -2,9 +2,9 @@
 
 namespace App\Domain\Posts\Requests;
 
-use App\Domain\Base\BaseFormRequest;
+use App\Domain\Core\BaseFormRequest;
 
-final class CreateOrUpdatePostRequest extends BaseFormRequest
+final class CreateUpdatePostRequest extends BaseFormRequest
 {
     public function rules()
     {

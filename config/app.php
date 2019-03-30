@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Api\V1\ApiVersion1ServiceProvider::class,
+        App\Domain\Core\ServiceProvider::class
 
     ],
 

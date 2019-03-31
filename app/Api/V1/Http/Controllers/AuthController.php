@@ -39,8 +39,8 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::user()->token()->revoke();
+        Auth::user()->revokeApiToken();
 
-        return response()->json(null, 204);
+        return response(null, 204);
     }
 }

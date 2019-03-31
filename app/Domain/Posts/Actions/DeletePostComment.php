@@ -6,8 +6,8 @@ use App\Domain\Posts\PostComment;
 
 class DeletePostComment
 {
-    public function execute(PostComment $post_comment)
+    public function execute(PostComment $post_comment): bool
     {
-        $post_comment->delete();
+        return $post_comment->delete();
     }
 }

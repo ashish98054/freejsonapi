@@ -6,8 +6,8 @@ use App\Domain\Posts\Post;
 
 final class DeletePost
 {
-    public function execute(Post $post)
+    public function execute(Post $post): bool
     {
-        $post->delete();
+        return $post->delete();
     }
 }

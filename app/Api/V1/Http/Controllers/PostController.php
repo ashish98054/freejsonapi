@@ -43,7 +43,7 @@ class PostController extends Controller
     }
 
     public function create(CreateUpdatePostRequest $request, CreatePost $create)
-    {
+    {        
         $created = $create->execute(PostData::fromRequest($request));
 
         $resource = new Item($created, new PostTransformer);

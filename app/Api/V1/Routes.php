@@ -13,4 +13,5 @@ Route::name('api.v1.')->namespace('\App\Api\V1\Http\Controllers')->group(functio
     Route::get('users/{user}', 'UserController@show')->name('users#show');
     Route::post('login', 'AuthController@login')->name('auth#login');
     Route::post('register', 'AuthController@register')->name('auth#register');
+    Route::post('logout', 'AuthController@logout')->name('auth#logout');
 });

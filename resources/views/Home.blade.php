@@ -59,7 +59,7 @@ fetch('https://freejsonapi.com/posts/1')
 	<p>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh lorem. Maecenas aliq
 	<ul>
-		<li><a href="#">Get posts</a></li>
+		<li><a href="#get_posts_container">Get posts</a></li>
 		<li><a href="#">Get a post</a></li>
 		<li><a href="#">Create post</a></li>
 		<li><a href="#">Delete post</a></li>
@@ -69,6 +69,22 @@ fetch('https://freejsonapi.com/posts/1')
 		<li><a href="#">User login</a></li>
 		<li><a href="#">User Registration</a></li>
 	</ul>
+
+	<div id="get_posts_container">
+<pre>
+  <code class="language-javascript">
+  POST /posts
+  Host: freejsonapi.com
+  Content-Type: application/json
+
+  {
+	title: "post title",
+	body: "post body"
+  }
+  </code>
+</pre>
+	</div>
+
 </article>
 </section>
 @endsection

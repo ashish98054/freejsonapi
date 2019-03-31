@@ -10,4 +10,9 @@ class BaseFormRequest extends FormRequest
     {
         return true;
     }
+
+    protected function validationData()
+    {
+        return count($this->json()->all()) ? $this->json()->all() : $this->all();
+    }
 }

@@ -9,7 +9,8 @@ final class CreateUpdatePostRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            
+            'title' => 'required',
+            'body' => 'required'
         ];
     }
 }

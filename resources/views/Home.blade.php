@@ -215,11 +215,31 @@ Content-Type: application/json
 </article>
 
 
+<article id="posts_update">
+<h3 class="sub-title">Update post</h3>
+<p><span class="bg bg-light p-1">PUT /posts</span> will update a post.</p>
+<p><b><small>Example JSON request</small></b></p>
+<pre>
+<code class="language-javascript">
+PUT /posts/1
+Host: freejsonapi.com
+Content-Type: application/json
+Authorization: Bearer {access_token}
 
-<article id="posts_get">
+{
+	title: 'updated title',
+	body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+	featured_image : ''
+}
+</code>
+</pre>
+<p>This endpoint will return 200 OK with the current JSON representation of the post if update was a success. See the <a href="#posts_get">Get a post</a> endpoint for more info on the payload.
+</article>
+
+
+<article id="posts_delete">
 <h3 class="sub-title">Delete post</h3>
 <p><span class="bg bg-light p-1">DELETE /posts/1</span> will remove the post with an ID of 1</p>
-<p><b><small>Example JSON request</small></b></p>
 
 <pre>
 <code class="language-javascript">
@@ -233,6 +253,64 @@ Authorization: Bearer {access_token}
 <p>No parameters required. Returns 204 No Content if successful.</p>
 </article>
 
+
+<!-- post comment section -->
+
+<article id="post_comments_get">
+<h3 class="sub-title">Get post comments</h3>
+<p><span class="bg bg-light p-1">GET /posts/1/comments</span> will return a paginated list of comments for post id 1.</p>
+<p>Optional query parameters:</p>
+<ul>
+	<li><span class="bg bg-light p-1">page</span> when set to a numeric value, will return paginated list of posts for given page.</li>
+</ul>
+<pre>
+<code class="language-javascript">
+GET /posts/1/comments
+Host: freejsonapi.com
+Content-Type: application/json
+
+
+</code>
+</pre>
+</article>
+
+
+<article id="post_comments_create">
+<h3 class="sub-title">Create post comment</h3>
+<p><span class="bg bg-light p-1">POST /posts/1/comments</span> will create a comment for post with id 1.</p>
+<p><b><small>Example JSON request</small></b></p>
+<pre>
+<code class="language-javascript">
+POST /posts/1/comments
+Host: freejsonapi.com
+Content-Type: application/json
+Authorization: Bearer {access_token}
+
+{
+	body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+}
+</code>
+</pre>
+<p>This endpoint will return 201 Created with the current JSON representation of the post comment if the creation was a success. See the <a href="#post_comments_get">Get a post comments</a> endpoint for more info on the payload.
+</article>
+
+
+
+<article id="post_comments_delete">
+<h3 class="sub-title">Delete post comment</h3>
+<p><span class="bg bg-light p-1">DELETE /comments/1</span> will remove the comment with an ID of 1</p>
+
+<pre>
+<code class="language-javascript">
+DELETE /comments/1
+Host: freejsonapi.com
+Content-Type: application/json
+Authorization: Bearer {access_token}
+</code>
+</pre>
+
+<p>No parameters required. Returns 204 No Content if successful.</p>
+</article>
 
 </section>
 @endsection

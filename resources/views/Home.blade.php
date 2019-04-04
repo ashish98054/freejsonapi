@@ -54,43 +54,48 @@ fetch('https://freejsonapi.com/posts/1')
 		</tr>
 		<tr>
 			<td>GET</td>
-			<td><a href="#">/posts/1/comments</a></td>
+			<td><a href="#posts_comments_create">/posts/1/comments</a></td>
 			<td>30 comments on every single post</td>
 		</tr>
 		<tr>
 			<td>POST</td>
-			<td><a href="#">/posts/1/comments</a></td>
+			<td><a href="#posts_comments_all">/posts/1/comments</a></td>
 			<td>create comment on post</td>
 		</tr>
 		<tr>
 			<td>PUT</td>
-			<td><a href="#">/comments/1</a></td>
+			<td><a href="#posts_comments_update">/comments/1</a></td>
 			<td>update comment</td>
 		</tr>
 		<tr>
 			<td>DELETE</td>
-			<td><a href="#">/comments/1</a></td>
+			<td><a href="#posts_comments_delete">/comments/1</a></td>
 			<td>delete comment from post</td>
 		</tr>
 		<tr>
 			<td>GET</td>
-			<td><a href="#">/users</a></td>
+			<td><a href="#users_all">/users</a></td>
 			<td>200 users</td>
 		</tr>
 		<tr>
 			<td>GET</td>
-			<td><a href="#">/users/1</a></td>
+			<td><a href="#users_get">/users/1</a></td>
 			<td>get user</td>
 		</tr>
 		<tr>
 			<td>POST</td>
-			<td><a href="#">/login</a></td>
+			<td><a href="#users_login">/login</a></td>
 			<td>user authentication</td>
 		</tr>
 		<tr>
 			<td>POST</td>
-			<td><a href="#">/register</a></td>
+			<td><a href="#users_register">/register</a></td>
 			<td>user registration</td>
+		</tr>
+		<tr>
+			<td>GET</td>
+			<td><a href="#users_authenticated">/me</a></td>
+			<td>get authenticated user</td>
 		</tr>
 	</tbody>
 	</table>
@@ -217,7 +222,7 @@ Content-Type: application/json
 
 <article id="posts_update">
 <h3 class="sub-title">Update post</h3>
-<p><span class="bg bg-light p-1">PUT /posts</span> will update a post.</p>
+<p><span class="bg bg-light p-1">PUT /posts/1</span> will update a post.</p>
 <p><b><small>Example JSON request</small></b></p>
 <pre>
 <code class="language-javascript">
@@ -310,6 +315,162 @@ Authorization: Bearer {access_token}
 </pre>
 
 <p>No parameters required. Returns 204 No Content if successful.</p>
+</article>
+
+
+<article id="users_all">
+<h3 class="sub-title">Get users</h3>
+<p><span class="bg bg-light p-1">GET /users</span> will return a paginated list of users.</p>
+<p>Optional query parameters:</p>
+<ul>
+	<li><span class="bg bg-light p-1">page</span> when set to a numeric value, will return paginated list of users for given page.</li>
+</ul>
+<pre>
+<code class="language-javascript">
+GET /users
+Host: freejsonapi.com
+Content-Type: application/json
+
+{
+"data": [{
+	"id": 81,
+	"url": "http://localhost:8000/users/81",
+	"name": "ashish k poudel",
+	"email": "raphaelle.langwort@gmail.com",
+	"email_verified_at": "2019-03-24T13:33:39.000000Z",
+	"created_at": "2019-03-24 13:33:39",
+	"updated_at": "2019-03-24 13:33:39"
+	}],
+	"meta": {
+		"pagination": {
+			"total": 58,
+			"count": 15,
+			"per_page": 15,
+			"current_page": 1,
+			"total_pages": 4,
+			"links": {
+				"next": "http://localhost:8000/posts?page=2"
+			}
+		}
+	}
+}
+</code>
+</pre>
+</article>
+
+
+<article id="users_get">
+<h3 class="sub-title">Get user</h3>
+<p><span class="bg bg-light p-1">GET /users/1</span> will return the user with an ID of 1.</p>
+<pre>
+<code class="language-javascript">
+GET /users/1
+Host: freejsonapi.com
+Content-Type: application/json
+
+{
+    "data": {
+        "id": 1,
+        "url": "http://localhost:8000/users/1",
+        "name": "Jamison Ritchie",
+        "email": "danielle.tromp@example.org",
+        "email_verified_at": "2019-03-23T19:18:20.000000Z",
+        "created_at": "2019-03-23 19:18:20",
+        "updated_at": "2019-04-02 18:04:20"
+    }
+}
+</code>
+</pre>
+</article>
+
+
+
+<article id="users_login">
+<h3 class="sub-title">Users login</h3>
+<p><span class="bg bg-light p-1">POST /login</span></p>
+<p><b><small>Example JSON request</small></b></p>
+<pre>
+<code class="language-javascript">
+POST /login
+Host: freejsonapi.com
+Content-Type: application/json
+
+{
+	email: "danielle.tromp@example.org",
+	password: "password"
+}
+</code>
+</pre>
+<p>This endpoint will return 200 OK if successful.
+<p><b><small>Example JSON response</small></b></p>
+<pre>
+<code class="language-javascript">
+{
+	"token": "e36e3336db6f104d0d6d0db4c45150d2c5dd3c3dc08238e44972cb53d6c8bdc7"
+}
+</code>
+</pre>
+</article>
+
+<article id="users_register">
+<h3 class="sub-title">Users register</h3>
+<p><span class="bg bg-light p-1">POST /register</span></p>
+<p><b><small>Example JSON request</small></b></p>
+<pre>
+<code class="language-javascript">
+POST /register
+Host: freejsonapi.com
+Content-Type: application/json
+
+{
+	name: "Jamison Ritchie",
+	email: "danielle.tromp@example.org",
+	password: "password"
+}
+</code>
+</pre>
+<p>This endpoint will return 201 Created if successful.
+<p><b><small>Example JSON response</small></b></p>
+<pre>
+<code class="language-javascript">
+{
+	"token": "e36e3336db6f104d0d6d0db4c45150d2c5dd3c3dc08238e44972cb53d6c8bdc7"
+}
+</code>
+</pre>
+</article>
+
+
+
+<article id="users_authenticated">
+<h3 class="sub-title">Get authenticated user</h3>
+<p><span class="bg bg-light p-1">GET /me</span> will return the authenticated user.</p>
+<p><b><small>Example JSON request</small></b></p>
+<pre>
+<code class="language-javascript">
+POST /me
+Host: freejsonapi.com
+Content-Type: application/json
+Authorization: Bearer {access_token}
+</code>
+</pre>
+
+<p><b><small>Example JSON response</small></b></p>
+<pre>
+<code class="language-javascript">
+{
+"data": {
+	"id": 1,
+	"url": "http://localhost:8000/users/1",
+	"name": "Jamison Ritchie",
+	"email": "danielle.tromp@example.org",
+	"email_verified_at": "2019-03-23T19:18:20.000000Z",
+	"created_at": "2019-03-23 19:18:20",
+	"updated_at": "2019-04-02 18:04:20"
+}
+}
+</code>
+</pre>
 </article>
 
 </section>

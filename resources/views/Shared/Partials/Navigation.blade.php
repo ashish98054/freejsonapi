@@ -12,7 +12,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/ashishkpoudel/freejsonapi">Github</a>
+        <a class="nav-link" target="_blank" href="https://github.com/ashishkpoudel/freejsonapi">Github</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Contact</a>

@@ -15,7 +15,7 @@
         <a class="nav-link" target="_blank" href="https://github.com/ashishkpoudel/freejsonapi">Github</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="https://twitter.com/ashishkpoudel" target="_blank">Contact</a>
       </li>
     </ul>
   </div>

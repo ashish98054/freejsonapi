@@ -12,7 +12,7 @@
 <code class="language-javascript">
 fetch('https://freejsonapi.com/posts/1')
 	.then(response => response.json())
-	.then(json => console.log(json))
+	.then(json => console.log(json.data))
 </code>
 </pre>
 <button type="button" class="btn btn-light">Try it</button>
